@@ -13,7 +13,8 @@ async function seed() {
 async function createCustomer() {
     const customer = await prisma.customer.create({
         data: {
-            name: 'Alice',
+            username: 'Alice',
+            password: 'temp',
             contact: {
                 create: {
                     email: 'alice@boolean.co.uk',
