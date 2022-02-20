@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function seed() {
-    await createCustomer();
+    await createUser();
     const movies = await createMovies();
     const screens = await createScreens();
     await createScreenings(screens, movies);
@@ -10,8 +10,8 @@ async function seed() {
     process.exit(0);
 }
 
-async function createCustomer() {
-    const customer = await prisma.customer.create({
+async function createUser() {
+    const user = await prisma.user.create({
         data: {
             username: 'Alice',
             password: 'temp',
@@ -27,9 +27,9 @@ async function createCustomer() {
         }
     });
 
-    console.log('Customer created', customer);
+    console.log('User created', user);
 
-    return customer;
+    return user;
 }
 
 async function createMovies() {
