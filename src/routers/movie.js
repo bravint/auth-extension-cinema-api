@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+const { validateToken } = require('../utils');
+
 const {
     getAllMovies,
     getMovie,
@@ -14,10 +16,10 @@ router.get('/', getAllMovies);
 
 router.get('/:movie', getMovie);
 
-router.post('/', createMovie);
+router.post('/', validateToken, createMovie);
 
-router.put('/:id', updateMovie);
+router.put('/:id', validateToken, updateMovie);
 
-router.post('/screen', createScreen);
+router.post('/screen', validateToken, createScreen);
 
 module.exports = router;
