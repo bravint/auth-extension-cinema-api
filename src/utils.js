@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const bcrypt = require('bcrypt');
 
-const hashPassword = (password) => bcrypt.hashSync(password, saltRounds);
+const hashPassword = (password) => await bcrypt.hashSync(password, saltRounds);
 
 const checkPassword = async (textPassword, hashedPassword) => {
     try {
