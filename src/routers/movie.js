@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { validateToken } = require('../utils');
+const { checkRole, validateToken } = require('../utils');
 
 const {
     getAllMovies,
@@ -16,10 +16,10 @@ router.get('/', getAllMovies);
 
 router.get('/:movie', getMovie);
 
-router.post('/', validateToken, createMovie);
+router.post('/', validateToken, checkRole, createMovie);
 
-router.put('/:id', validateToken, updateMovie);
+router.put('/:id', validateToken, checkRole, updateMovie);
 
-router.post('/screen', validateToken, createScreen);
+router.post('/screen', validateToken, checkRole, createScreen);
 
 module.exports = router;
