@@ -1,5 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const { hashPassword, prisma } = require ('../src/utils.js')
 
 async function seed() {
     await createUser();
@@ -14,7 +13,7 @@ async function createUser() {
     const user = await prisma.user.create({
         data: {
             username: 'Alice',
-            password: 'temp',
+            password: hashPassword('temp'),
             contact: {
                 create: {
                     email: 'alice@boolean.co.uk',
